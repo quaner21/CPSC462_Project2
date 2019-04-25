@@ -2,6 +2,7 @@
 #include <string>
 #include <chrono>
 #include <vector>
+#include <algorithm>
 
 #include "generate_report.h"
 
@@ -9,22 +10,33 @@ void ReportGenerator::generate_report(std::vector<int> data, int entries) {
 	int sum = 0;
 	int max = 0;
 	int min = 1000;
-	int i = 0;
-	std::vector<int>::iterator it = data.end();
+	int size = data.size();
+	int i = std::min(size - 1, entries - 1);
 
-	while (i < entries && it != data.begin()) {
-		sum += *it;
-		if (*it > max) {
-			max = *it;
+	while (i >= 0) {
+		sum += data[i];
+		if (data[i] > max) {
+			max = data[i];
 		}
-		if (*it < min) {
-			min = *it;
+		if (data[i] < min) {
+			min = data[i];
 		}
-		i++;
-		it--;
+		i--;
 	}
 
-	std::cout << "Average: " << sum / entries << std::endl;
+	if (std::min(size, entries) > 0)
+		std::cout << "Average: " << sum / std::min(size, entries) << std::endl;
 	std::cout << "Highest: " << max << std::endl;
 	std::cout << "Lowest: " << min << std::endl;
 }
+
+//int main() {
+//	std::vector<int> myvector;
+//	for (int i = 1; i <= 5; i++) myvector.push_back(i);
+//	
+//	ReportGenerator temp;
+//	temp.generate_report(myvector, 243);
+//
+//	system("pause");
+//	return 0;
+//}

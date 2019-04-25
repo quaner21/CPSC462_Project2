@@ -13,5 +13,4 @@ public:
 
 private:
 	std::vector<int> pulse_data;
-	//void clear_records(SysTime);
 };

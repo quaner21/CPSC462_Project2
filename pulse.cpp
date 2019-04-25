@@ -16,18 +16,18 @@ PulseRecord::PulseRecord() {
 }
 
 void PulseRecord::readin_data() {
-	std::ifstream pulse_data("pulse_data.txt", std::ios::in);
+	std::ifstream pulse_data_input("pulse_data.txt", std::ios::in);
 
-	if (!pulse_data) {
+	if (!pulse_data_input) {
 		std::cout << "Could not open file" << std::endl;
 	}
 
 	int pulse;
-	while (pulse_data >> pulse) {
-		pulse_data.putback(pulse);
+	while (pulse_data_input >> pulse) {
+		pulse_data.push_back(pulse);
 	}
 
-	pulse_data.close();
+	pulse_data_input.close();
 }
 
 // This function should run once every second in the system
@@ -47,6 +47,10 @@ void PulseRecord::save_hourly_measurement(int sensor_signal) {
 }
 
 void PulseRecord::generate_daily_report() {
+	for (std::vector<int>::iterator it = pulse_data.begin(); it != pulse_data.end(); ++it){ 
+		std::cout << ' ' << *it;
+	}
+
 	std::cout << "Your daily pulse report: " << std::endl;
 	ReportGenerator pulse_daily;
 	pulse_daily.generate_report(pulse_data, 24);
@@ -64,24 +68,14 @@ void PulseRecord::generate_monthly_report() {
 	pulse_monthly.generate_report(pulse_data, 720);
 }
 
-//void PulseRecord::clear_records(SysTime current_time) {
-//	if (current_time.get_sys_time_hour() == 0 && current_time.get_sys_time_minute() == 0 && current_time.get_sys_time_second() == 0)
-//		hourly_measurements[24] = { 0 };
-//}
 
-//int main() {
-//	srand(time(NULL));
-//
-//	PulseRecord record;
-//
-//	//int sensor_signal = rand() % 50 + 56;  // random number between 56-105
-//	//SysTime current_time(17, 28, 52);  // hard coded
-//	//bool user_request_measurement = true;
-//
-//	//if (current_time.system_time_oclock() || user_request_measurement) {
-//	//	record.get_current_measurement(sensor_signal, current_time);
-//	//}
-//
-//	system("pause");
-//	return 0;
-//}
+int main() {
+	srand(time(NULL));
+
+	PulseRecord record;
+	record.readin_data();
+	record.generate_daily_report();
+
+	system("pause");
+	return 0;
+}
