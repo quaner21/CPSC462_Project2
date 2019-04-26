@@ -47,10 +47,6 @@ void PulseRecord::save_hourly_measurement(int sensor_signal) {
 }
 
 void PulseRecord::generate_daily_report() {
-	for (std::vector<int>::iterator it = pulse_data.begin(); it != pulse_data.end(); ++it){ 
-		std::cout << ' ' << *it;
-	}
-
 	std::cout << "Your daily pulse report: " << std::endl;
 	ReportGenerator pulse_daily;
 	pulse_daily.generate_report(pulse_data, 24);
@@ -69,13 +65,11 @@ void PulseRecord::generate_monthly_report() {
 }
 
 
-int main() {
-	srand(time(NULL));
-
-	PulseRecord record;
-	record.readin_data();
-	record.generate_daily_report();
-
-	system("pause");
-	return 0;
-}
+//int main() {
+//	PulseRecord record;
+//	record.readin_data();
+//	record.generate_daily_report();
+//
+//	system("pause");
+//	return 0;
+//}

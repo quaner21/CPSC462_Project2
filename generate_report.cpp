@@ -12,15 +12,17 @@ void ReportGenerator::generate_report(std::vector<int> data, int entries) {
 	int min = 1000;
 	int size = data.size();
 	int i = std::min(size - 1, entries - 1);
+	int last = size - 1;
 
 	while (i >= 0) {
-		sum += data[i];
-		if (data[i] > max) {
-			max = data[i];
+		sum += data[last];
+		if (data[last] > max) {
+			max = data[last];
 		}
-		if (data[i] < min) {
-			min = data[i];
+		if (data[last] < min) {
+			min = data[last];
 		}
+		last--;
 		i--;
 	}
 
