@@ -16,6 +16,7 @@ std::string ContactLibrary::find_contact(std::string name) {
 
 	if (!contact_data) {
 		std::cout << "You have no contacts yet!" << std::endl;
+		return "";
 	}
 	else {
 		std::string name, number;
@@ -46,15 +47,7 @@ void Dial::dial_contact(std::string name) {
 	ContactLibrary contact_book;
 	std::string number_to_dial = contact_book.find_contact(name);
 	if (number_to_dial.length() != 0) {
-		//std::cout << "Dialing " << number_to_dial << std::endl;
+		std::cout << "Dialing " << number_to_dial << "..." << std::endl;
 		// call dial function from mobile and pass number_to_dial
 	}
 }
-
-//int main() {
-//	Dial make_a_call;
-//	make_a_call.dial_contact("Alice");
-//
-//	system("pause");
-//	return 0;
-//}

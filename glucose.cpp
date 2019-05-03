@@ -63,13 +63,3 @@ void GlucoseRecord::generate_monthly_report() {
 	ReportGenerator pulse_monthly;
 	pulse_monthly.generate_report(glucose_data, 720);
 }
-
-
-int main() {
-	GlucoseRecord record;
-	record.readin_data();
-	record.generate_daily_report();
-
-	system("pause");
-	return 0;
-}

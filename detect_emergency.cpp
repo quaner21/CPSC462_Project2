@@ -34,14 +34,3 @@ bool DetectEmergency::detect_emergency() {
 	else
 		return false;
 }
-
-
-//int main() {
-//	srand(time(NULL));
-//	DetectEmergency situation1;
-//	bool temp = situation1.detect_emergency();
-//	std::cout << temp << std::endl;
-//
-//	system("pause");
-//	return 0;
-//}

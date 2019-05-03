@@ -82,12 +82,3 @@ void Register::new_account() {
 	output_file << username << ' ' << password << std::endl;
 	output_file.close();
 }
-
-
-//int main() {
-//	Login login;
-//	login.login();
-//
-//	system("pause");
-//	return 0;
-//}

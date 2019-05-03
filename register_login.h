@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_map>
+
 class LoginManager {
 public:
 	void readin_user_data();

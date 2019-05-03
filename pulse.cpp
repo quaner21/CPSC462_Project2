@@ -63,13 +63,3 @@ void PulseRecord::generate_monthly_report() {
 	ReportGenerator pulse_monthly;
 	pulse_monthly.generate_report(pulse_data, 720);
 }
-
-
-//int main() {
-//	PulseRecord record;
-//	record.readin_data();
-//	record.generate_daily_report();
-//
-//	system("pause");
-//	return 0;
-//}
